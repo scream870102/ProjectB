@@ -90,21 +90,21 @@ public class RhythmTimer : MonoBehaviour
                    colorResult=EColor.PURPLE;
                 else if (color2==EColor.YELLOW)
                     colorResult=EColor.ORANGE;
-                    break;
+                break;
             case EColor.YELLOW:
                 if(color2==EColor.BLUE)
                     colorResult=EColor.GREEN;
                 else if (color2==EColor.RED)
                     colorResult=EColor.ORANGE;
-                    break;
+                break;
             case EColor.BLUE:
                 if(color2==EColor.YELLOW)
                     colorResult=EColor.GREEN;
                 else if (color2==EColor.RED)
                     colorResult=EColor.PURPLE;
-                    break;
-                default:
-                    break;
+                break;
+            default:
+                break;
         }
         return colorResult;
     } 
