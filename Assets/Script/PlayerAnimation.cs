@@ -19,7 +19,7 @@ public class PlayerAnimation : MonoBehaviour {
     private EPlayerState state;
     private List<PlayerInputInfo> InputResults = new List<PlayerInputInfo> ( );
     private bool bFcolorFin;
-
+    [SerializeField]
     protected List<Vector2Int>steps=new List<Vector2Int>();
 
     public Vector2Int playerPos;
@@ -34,7 +34,7 @@ public class PlayerAnimation : MonoBehaviour {
 
     // Update is called once per frame
     void Update ( ) {
-        if (isTime ( )) {
+        if (!parent.rhythmTimer.IsInputTime) {
             state = EPlayerState.WALK;
         }
         else
