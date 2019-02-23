@@ -6,5 +6,5 @@ public struct PlayerInputInfo
     public PlayerInputInfo(EColor color,float time){
         this.color=color;
         this.time=time;
-    }
+    }   
 }
