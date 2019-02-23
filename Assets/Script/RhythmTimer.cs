@@ -59,36 +59,31 @@ public class RhythmTimer : MonoBehaviour
     public PlayerInputInfo[] GetInputResult(List<PlayerInputInfo> playerInput) //判斷是否在輸入成功區間
     {
         PlayerInputInfo [] result=new PlayerInputInfo[2]{new PlayerInputInfo(EColor.NONE,.0f),new PlayerInputInfo(EColor.NONE,.0f)};
+        bool [] bsuccess=new bool[4];
         //List<PlayerInputInfo> result = new List<PlayerInputInfo>();
         for (int i = 0; i < playerInput.Count; i++)
         {
             float playerInputTime = playerInput[i].time % SecRound;
-            /*for(int j = 0; j < 4; j++){
-                switch(j%2){  
-                    case 0:  //在一拍輸入
-                        if (playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation))//有效輸入直接輸出顏色
-                            result[j]=playerInput[i];
-                            //result.Add(playerInput[i]);
-                        break;
-                    case 1:  //在半拍輸入
-                        if (playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation))//有效輸入
-                        {
-                            //先判斷前一半拍有輸入result.Contains(result[i-1])
-                            if(result[j-1].color!=EColor.NONE){
-                                
-                                }
-                            }
-                            
-                        }
-                        break;
+            for(int j = 0; j < 4; j++){
+                if(!bsuccess[j]&&playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation)){
+                    bsuccess[j]=true;
+                    if(j==0)
+                        result[0]=playerInput[i];
+                    else if(j==2)
+                        result[1]=playerInput[i];
                 }
-                
-            }*/
+            }
+            if(bsuccess[1]&&bsuccess[0])
+                result[0].color=MixColor(playerInput[i].color,playerInput[i-1].color);
+            else if(bsuccess[3]&&bsuccess[2])
+                result[1].color=MixColor(playerInput[i].color,playerInput[i-1].color);
+
         }
         return result;
+        
     }
+    EColor colorResult;
     EColor MixColor(EColor color1,EColor color2){
-        EColor colorResult;
         switch(color1){ //判斷顏色組合
             case EColor.RED:
                 if(color2==EColor.BLUE)
@@ -100,16 +95,16 @@ public class RhythmTimer : MonoBehaviour
                 if(color2==EColor.BLUE)
                     colorResult=EColor.GREEN;
                 else if (color2==EColor.RED)
-                    color1=EColor.ORANGE;
+                    colorResult=EColor.ORANGE;
                     break;
             case EColor.BLUE:
                 if(color2==EColor.YELLOW)
-                    color1=EColor.GREEN;
-                                        else if (color2==EColor.RED)
-                                            color1=EColor.PURPLE;
-                                        break;
-                                    default:
-                                        break;
+                    colorResult=EColor.GREEN;
+                else if (color2==EColor.RED)
+                    colorResult=EColor.PURPLE;
+                    break;
+                default:
+                    break;
         }
         return colorResult;
     } 
