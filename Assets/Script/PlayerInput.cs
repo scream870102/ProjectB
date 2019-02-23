@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour {
     public IPlayer Parent { set { if (parent == null) parent = value; } }
     public string PlayerInputString { set { playerInputString = value; } }
     private string playerInputString;
+    [SerializeField]
     private List<PlayerInputInfo> inputs = new List<PlayerInputInfo> ( );
     private PlayerInputInfo[] inputResults = new PlayerInputInfo[2];
     public PlayerInputInfo[] InputResults { get { return inputResults; } }
@@ -21,6 +22,7 @@ public class PlayerInput : MonoBehaviour {
 
     // Update is called once per frame
     void Update ( ) {
+        Debug.Log(parent.rhythmTimer.IsInputTime);
         if (parent.rhythmTimer.IsInputTime) {
 
             GetPlayerInput ( );
