@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     public string PlayerInputString{set{playerInputString=value;}}
     private string playerInputString;
     private List<PlayerInputInfo> inputs=new List<PlayerInputInfo>();
+    private List<PlayerInputInfo> inputResults=new List<PlayerInputInfo>();
     private bool bReset;
 
     // Start is called before the first frame update
@@ -25,13 +26,10 @@ public class PlayerInput : MonoBehaviour
             
         }
         else if(!Istime()){
-            
+            bReset=false;
+            inputResults.Clear();
+            inputResults.AddRange(SendResult(inputs));
         }
-    }
-
-
-    bool Istime(){
-        return true;
     }
 
     void GetPlayerInput(){
@@ -40,8 +38,28 @@ public class PlayerInput : MonoBehaviour
             bReset=true;
         }
         if(Input.GetButtonDown(playerInputString+"RED")){
-            inputs.Add(new PlayerInputInfo(EColor.RED,))
+            inputs.Add(new PlayerInputInfo(EColor.RED,GetTime()));
+        }
+        else if(Input.GetButtonDown(playerInputString+"GREEN")){
+            inputs.Add(new PlayerInputInfo(EColor.GREEN,GetTime()));
+        }
+        else if(Input.GetButtonDown(playerInputString+"BLUE")){
+            inputs.Add(new PlayerInputInfo(EColor.BLUE,GetTime()));
         }
     }
 
+
+    bool Istime(){
+        return true;
+    }
+
+
+
+    float GetTime(){
+        return .0f;
+    }
+
+    List<PlayerInputInfo> SendResult(List<PlayerInputInfo> inputs){
+        return inputs;
+    }
 }
