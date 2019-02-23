@@ -40,13 +40,12 @@ public class RhythmTimer : MonoBehaviour
     {
         songPosition = audioSource.time;
         Condition(songPosition);   //判斷狀態
-        //Debug.Log(conditionType);
+        Debug.Log(conditionType);
     }
 
     private void Condition(float songPosition)
     {
         float fTime = songPosition % SecRound;
-        //Debug.Log(fTime);
         if (fTime >= 0f && fTime < 2.0f*SecPerBeat- Deviation)
             conditionType = (int)EConditionType.Ready;
         else if (fTime >= 2.0f*SecPerBeat- Deviation && fTime < (4.0f * SecPerBeat+ Deviation) )
@@ -58,25 +57,33 @@ public class RhythmTimer : MonoBehaviour
 
     public PlayerInputInfo[] GetInputResult(List<PlayerInputInfo> playerInput) //判斷是否在輸入成功區間
     {
-        PlayerInputInfo [] result=new PlayerInputInfo[2]{new PlayerInputInfo(EColor.NONE,.0f),new PlayerInputInfo(EColor.NONE,.0f)};
+        
+        PlayerInputInfo [] result=new PlayerInputInfo[2]{new PlayerInputInfo(EColor.NONE,.0f),new PlayerInputInfo(EColor.NONE,.0f)}; 
         bool [] bsuccess=new bool[4];
         //List<PlayerInputInfo> result = new List<PlayerInputInfo>();
         for (int i = 0; i < playerInput.Count; i++)
         {
             float playerInputTime = playerInput[i].time % SecRound;
             for(int j = 0; j < 4; j++){
+                Debug.Log("j="+j);
+                Debug.Log("bsuccess[0]="+bsuccess[0]);
                 if(!bsuccess[j]&&playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation)){
+                    
                     bsuccess[j]=true;
-                    if(j==0)
+                    if(j==0){
                         result[0]=playerInput[i];
+                        Debug.Log(result[0]);
+                        Debug.Log(playerInput[i]);}
+                    else if(j==1&&bsuccess[0]){
+                        result[0].color=MixColor(playerInput[i].color,playerInput[i-1].color);
+                        Debug.Log("a");}
                     else if(j==2)
                         result[1]=playerInput[i];
+                    else if(j==3&&bsuccess[2]){
+                        result[1].color=MixColor(playerInput[i].color,playerInput[i-1].color);
+                        Debug.Log("b");}
                 }
             }
-            if(bsuccess[1]&&bsuccess[0])
-                result[0].color=MixColor(playerInput[i].color,playerInput[i-1].color);
-            else if(bsuccess[3]&&bsuccess[2])
-                result[1].color=MixColor(playerInput[i].color,playerInput[i-1].color);
 
         }
         return result;
@@ -87,21 +94,27 @@ public class RhythmTimer : MonoBehaviour
         switch(color1){ //判斷顏色組合
             case EColor.RED:
                 if(color2==EColor.BLUE)
-                   colorResult=EColor.PURPLE;
+                    colorResult=EColor.PURPLE;
                 else if (color2==EColor.YELLOW)
                     colorResult=EColor.ORANGE;
+                else 
+                    colorResult=color1;
                 break;
             case EColor.YELLOW:
                 if(color2==EColor.BLUE)
                     colorResult=EColor.GREEN;
                 else if (color2==EColor.RED)
                     colorResult=EColor.ORANGE;
+                else 
+                    colorResult=color1;
                 break;
             case EColor.BLUE:
                 if(color2==EColor.YELLOW)
                     colorResult=EColor.GREEN;
                 else if (color2==EColor.RED)
                     colorResult=EColor.PURPLE;
+                else 
+                    colorResult=color1;
                 break;
             default:
                 break;

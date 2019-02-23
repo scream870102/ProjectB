@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour {
     private string playerInputString;
     [SerializeField]
     private List<PlayerInputInfo> inputs = new List<PlayerInputInfo> ( );
+    [SerializeField]
     private PlayerInputInfo[] inputResults = new PlayerInputInfo[2];
     public PlayerInputInfo[] InputResults { get { return inputResults; } }
     private bool bReset;
@@ -43,7 +44,7 @@ public class PlayerInput : MonoBehaviour {
             inputs.Add (new PlayerInputInfo (EColor.RED, parent.rhythmTimer.GetSongPosition));
         }
         else if (Input.GetButtonDown (playerInputString + "YELLOW")) {
-            inputs.Add (new PlayerInputInfo (EColor.GREEN, parent.rhythmTimer.GetSongPosition));
+            inputs.Add (new PlayerInputInfo (EColor.YELLOW, parent.rhythmTimer.GetSongPosition));
         }
         else if (Input.GetButtonDown (playerInputString + "BLUE")) {
             inputs.Add (new PlayerInputInfo (EColor.BLUE, parent.rhythmTimer.GetSongPosition));
