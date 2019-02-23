@@ -10,8 +10,8 @@ public class PlayerInput : MonoBehaviour {
     public string PlayerInputString { set { playerInputString = value; } }
     private string playerInputString;
     private List<PlayerInputInfo> inputs = new List<PlayerInputInfo> ( );
-    private List<PlayerInputInfo> inputResults = new List<PlayerInputInfo> ( );
-    public List<PlayerInputInfo> InputResults { get { return inputResults; } }
+    private PlayerInputInfo[] inputResults = new PlayerInputInfo[2];
+    public PlayerInputInfo[] InputResults { get { return inputResults; } }
     private bool bReset;
 
     // Start is called before the first frame update
@@ -21,15 +21,14 @@ public class PlayerInput : MonoBehaviour {
 
     // Update is called once per frame
     void Update ( ) {
-        if (Istime ( )) {
+        if (parent.rhythmTimer.IsInputTime) {
 
             GetPlayerInput ( );
 
         }
-        else if (!Istime ( )) {
+        else if (!parent.rhythmTimer.IsInputTime) {
             bReset = false;
-            inputResults.Clear ( );
-            inputResults.AddRange (SendResult (inputs));
+            inputResults=SendResult (inputs);
         }
     }
 
@@ -39,25 +38,17 @@ public class PlayerInput : MonoBehaviour {
             bReset = true;
         }
         if (Input.GetButtonDown (playerInputString + "RED")) {
-            inputs.Add (new PlayerInputInfo (EColor.RED, GetTime ( )));
+            inputs.Add (new PlayerInputInfo (EColor.RED, parent.rhythmTimer.GetSongPosition));
         }
         else if (Input.GetButtonDown (playerInputString + "YELLOW")) {
-            inputs.Add (new PlayerInputInfo (EColor.GREEN, GetTime ( )));
+            inputs.Add (new PlayerInputInfo (EColor.GREEN, parent.rhythmTimer.GetSongPosition));
         }
         else if (Input.GetButtonDown (playerInputString + "BLUE")) {
-            inputs.Add (new PlayerInputInfo (EColor.BLUE, GetTime ( )));
+            inputs.Add (new PlayerInputInfo (EColor.BLUE, parent.rhythmTimer.GetSongPosition));
         }
     }
 
-    bool Istime ( ) {
-        return true;
-    }
-
-    float GetTime ( ) {
-        return .0f;
-    }
-
-    List<PlayerInputInfo> SendResult (List<PlayerInputInfo> inputs) {
-        return inputs;
+    PlayerInputInfo[] SendResult (List<PlayerInputInfo> inputs) {
+        return parent.rhythmTimer.GetInputResult(inputs);;
     }
 }

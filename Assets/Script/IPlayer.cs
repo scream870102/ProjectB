@@ -1,23 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
-public class IPlayer : MonoBehaviour
-{
+public class IPlayer : MonoBehaviour {
+    public RhythmTimer rhythmTimer = null;
     PlayerInput input;
-    public List<PlayerInputInfo> InputResults{get{return input.InputResults;}}
-    void Awake() {
-        input=GetComponent<PlayerInput>();
-        input.Parent=this;    
+    public PlayerInputInfo[] InputResults { get { return input.InputResults; } }
+    void Awake ( ) {
+        input = GetComponent<PlayerInput> ( );
+        input.Parent = this;
     }
-    void Start()
-    {
-        
+    void Start ( ) {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update ( ) {
+
     }
 }

@@ -15,7 +15,7 @@ public class RhythmTimer : MonoBehaviour
     float[] InputTime = new float[4];
     public bool IsInputTime { get { return ((conditionType == (int)EConditionType.Input) ? true : false); } }
     
-    public float getSongPosition{ get { return songPosition; } }
+    public float GetSongPosition{ get { return songPosition; } }
 
     enum EConditionType
     {
