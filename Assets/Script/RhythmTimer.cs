@@ -63,7 +63,7 @@ public class RhythmTimer : MonoBehaviour
         for (int i = 0; i < playerInput.Count; i++)
         {
             float playerInputTime = playerInput[i].time % SecRound;
-            for(int j = 0; j < 4; j++){
+            /*for(int j = 0; j < 4; j++){
                 switch(j%2){  
                     case 0:  //在一拍輸入
                         if (playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation))//有效輸入直接輸出顏色
@@ -75,27 +75,7 @@ public class RhythmTimer : MonoBehaviour
                         {
                             //先判斷前一半拍有輸入result.Contains(result[i-1])
                             if(result[j-1].color!=EColor.NONE){
-                                switch(playerInput[i].color){ //判斷顏色組合
-                                    case EColor.RED:
-                                        if(playerInput[i-1].color==EColor.BLUE)
-                                            result[i-1].color=EColor.PURPLE;
-                                        else if (playerInput[i-1].color==EColor.YELLOW)
-                                            result[i-1].color=EColor.ORANGE;
-                                        break;
-                                    case EColor.YELLOW:
-                                        if(playerInput[i-1].color==EColor.BLUE)
-                                            result[i-1].color=EColor.GREEN;
-                                        else if (playerInput[i-1].color==EColor.RED)
-                                            result[i-1].color=EColor.ORANGE;
-                                        break;
-                                    case EColor.BLUE:
-                                        if(playerInput[i-1].color==EColor.YELLOW)
-                                            result[i-1].color=EColor.GREEN;
-                                        else if (playerInput[i-1].color==EColor.RED)
-                                            result[i-1].color=EColor.PURPLE;
-                                        break;
-                                    default:
-                                        break;
+                                
                                 }
                             }
                             
@@ -103,8 +83,34 @@ public class RhythmTimer : MonoBehaviour
                         break;
                 }
                 
-            }
+            }*/
         }
         return result;
     }
+    EColor MixColor(EColor color1,EColor color2){
+        EColor colorResult;
+        switch(color1){ //判斷顏色組合
+            case EColor.RED:
+                if(color2==EColor.BLUE)
+                   colorResult=EColor.PURPLE;
+                else if (color2==EColor.YELLOW)
+                    colorResult=EColor.ORANGE;
+                    break;
+            case EColor.YELLOW:
+                if(color2==EColor.BLUE)
+                    colorResult=EColor.GREEN;
+                else if (color2==EColor.RED)
+                    color1=EColor.ORANGE;
+                    break;
+            case EColor.BLUE:
+                if(color2==EColor.YELLOW)
+                    color1=EColor.GREEN;
+                                        else if (color2==EColor.RED)
+                                            color1=EColor.PURPLE;
+                                        break;
+                                    default:
+                                        break;
+        }
+        return colorResult;
+    } 
 }
