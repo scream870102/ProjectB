@@ -6,10 +6,15 @@ using UnityEngine;
 public class IPlayer : MonoBehaviour {
     public RhythmTimer rhythmTimer = null;
     PlayerInput input;
+    PlayerAnimation anim;
     public PlayerInputInfo[] InputResults { get { return input.InputResults; } }
     void Awake ( ) {
         input = GetComponent<PlayerInput> ( );
         input.Parent = this;
+        anim=GetComponent<PlayerAnimation>();
+        anim.Parent=this;
+        input.PlayerInputString="Player1";
+        rhythmTimer=GameObject.Find("AudioSource").GetComponent<RhythmTimer>();
     }
     void Start ( ) {
 

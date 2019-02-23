@@ -73,7 +73,7 @@ public class PlayerAnimation : MonoBehaviour {
 
     bool Walk (EColor color) {
         bool bNextExist = false;
-        if (GameManager.instance.maps [playerPos.x, playerPos.y - 1] == color) {
+        if ((EColor)GameManager.instance.maps [playerPos.x, playerPos.y - 1] == color) {
             steps.Add(new Vector2Int(0,-1));
             //playerPos += new Vector2Int (0, -1);
             bNextExist=FindNext(playerPos+new Vector2Int(0,-1),playerPos,color);
