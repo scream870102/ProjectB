@@ -56,34 +56,46 @@ public class RhythmTimer : MonoBehaviour
     }
 
 
-    public List<PlayerInputInfo> GetInputResult(List<PlayerInputInfo> playerInput) //判斷是否在輸入成功區間
+    public PlayerInputInfo[] GetInputResult(List<PlayerInputInfo> playerInput) //判斷是否在輸入成功區間
     {
-        List<PlayerInputInfo> result = new List<PlayerInputInfo>();
+        PlayerInputInfo [] result=new PlayerInputInfo[2]{new PlayerInputInfo(EColor.NONE,.0f),new PlayerInputInfo(EColor.NONE,.0f)};
+        //List<PlayerInputInfo> result = new List<PlayerInputInfo>();
         for (int i = 0; i < playerInput.Count; i++)
         {
             float playerInputTime = playerInput[i].time % SecRound;
             for(int j = 0; j < 4; j++){
-                if (playerInputTime >= (InputTime[i] - Deviation) && playerInputTime <= (InputTime[i] + Deviation))
-                {
-                    result.Add(playerInput[i]);
-                }
-            }
-            
-            /*for(int j = 0; i < 4; j++){
-                switch(j%2){
-                    case 0:
-                    {
-                        if (playerInputTime >= ((InputTime[i] - Deviation) && playerInputTime <= ((InputTime[i] + Deviation))
+                switch(j%2){  
+                    case 0:  //在一拍輸入
+                        if (playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation))//有效輸入直接輸出顏色
+                            result[j]=playerInput[i];
+                            //result.Add(playerInput[i]);
+                        break;
+                    case 1:  //在半拍輸入
+                        if (playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation))//有效輸入
                         {
-                            result.Add(playerInput[i]);
+                            //先判斷前一半拍有輸入result.Contains(result[i-1])
+                            if(result[j-1].color!=null){
+                                switch(playerInput[i].color){ //判斷顏色組合
+                                    case EColor.RED:
+                                        if(playerInput[i-1].color==EColor.BLUE)
+                                            result[i-1].color=EColor.PURPLE;
+                                        else if (playerInput[i-1].color==EColor.YELLOW)
+                                            result[i-1].color=EColor.ORANGE;
+                                        break;
+                                    case EColor.YELLOW:
+                                        break;
+                                    case EColor.BLUE:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            
                         }
-                    };
-                    case 1:
-                    default:
                         break;
                 }
                 
-            }*/
+            }
         }
         return result;
     }
