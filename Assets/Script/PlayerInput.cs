@@ -41,7 +41,7 @@ public class PlayerInput : MonoBehaviour {
         if (Input.GetButtonDown (playerInputString + "RED")) {
             inputs.Add (new PlayerInputInfo (EColor.RED, GetTime ( )));
         }
-        else if (Input.GetButtonDown (playerInputString + "GREEN")) {
+        else if (Input.GetButtonDown (playerInputString + "YELLOW")) {
             inputs.Add (new PlayerInputInfo (EColor.GREEN, GetTime ( )));
         }
         else if (Input.GetButtonDown (playerInputString + "BLUE")) {

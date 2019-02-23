@@ -1,7 +1,10 @@
 ﻿[System.Serializable]
 public enum EColor{
     RED,
+    ORANGE,
+    YELLOW,
     GREEN,
-    BLUE
+    BLUE,
+    PURPLE
 }
     

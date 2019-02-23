@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	//static ref for this class
 	[HideInInspector]
 	public static GameManager instance = null;
+	public EColor[,] maps=new EColor[50,50];
 	void Awake ( ) {
 		if (instance == null)
 			instance = this;
@@ -15,7 +16,8 @@ public class GameManager : MonoBehaviour {
 			Destroy (gameObject);
 		DontDestroyOnLoad (gameObject);
 	}
-	protected virtual void Start ( ) {	}
+	protected virtual void Start ( ) {	
+	}
 	protected virtual void Update ( ) { }
 
 }
