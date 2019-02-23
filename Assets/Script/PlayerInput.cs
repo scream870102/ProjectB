@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
+    //temp
     protected IPlayer parent = null;
     public IPlayer Parent { set { if (parent == null) parent = value; } }
     public string PlayerInputString { set { playerInputString = value; } }
