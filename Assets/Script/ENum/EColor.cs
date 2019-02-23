@@ -5,6 +5,7 @@ public enum EColor{
     YELLOW,
     GREEN,
     BLUE,
-    PURPLE
+    PURPLE,
+    NONE
 }
     
