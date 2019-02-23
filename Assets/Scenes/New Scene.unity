@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Deviation: 0.1
-  Bpm: 60
+  Bpm: 100
 --- !u!82 &1998020558
 AudioSource:
   m_ObjectHideFlags: 0
