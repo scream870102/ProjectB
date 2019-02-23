@@ -22,7 +22,7 @@ public class PlayerInput : MonoBehaviour {
 
     // Update is called once per frame
     void Update ( ) {
-        Debug.Log(parent.rhythmTimer.IsInputTime);
+        //Debug.Log(parent.rhythmTimer.IsInputTime);
         if (parent.rhythmTimer.IsInputTime) {
 
             GetPlayerInput ( );

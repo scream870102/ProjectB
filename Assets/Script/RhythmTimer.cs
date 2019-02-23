@@ -88,7 +88,7 @@ public class RhythmTimer : MonoBehaviour
         return result;
     }
     EColor MixColor(EColor color1,EColor color2){
-        EColor colorResult;
+        EColor colorResult=EColor.GREEN;
         switch(color1){ //判斷顏色組合
             case EColor.RED:
                 if(color2==EColor.BLUE)
