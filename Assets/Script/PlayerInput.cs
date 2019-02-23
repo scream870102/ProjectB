@@ -39,6 +39,9 @@ public class PlayerInput : MonoBehaviour
             inputs.Clear();
             bReset=true;
         }
-        
+        if(Input.GetButtonDown(playerInputString+"RED")){
+            inputs.Add(new PlayerInputInfo(EColor.RED,))
+        }
     }
+
 }
