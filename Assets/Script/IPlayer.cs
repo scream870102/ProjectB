@@ -5,7 +5,7 @@ using UnityEngine;
 public class IPlayer : MonoBehaviour
 {
     PlayerInput input;
-    List<PlayerInputInfo> InputResults{get{return input.InputResults;}}
+    public List<PlayerInputInfo> InputResults{get{return input.InputResults;}}
     void Awake() {
         input=GetComponent<PlayerInput>();
         input.Parent=this;    
