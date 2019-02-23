@@ -4,58 +4,61 @@ using UnityEngine;
 
 public class RhythmTimer : MonoBehaviour
 {
-    float ftimer;
-    public float fDeviation=0.1f; //誤差範圍
-    public float fbpm = 60f;  //每分多少拍
-    float fsecperbeat;  //1拍幾秒
-    float fsecround;  //每回合幾秒
-    int iconditiontype;
+    public float Deviation=0.1f; //誤差範圍
+    public float Bpm = 100f;  //每分多少拍
+    float SecPerBeat;  //1拍幾秒
+    float SecRound;  //每回合幾秒
+    float dspTimeSong;  //歌曲位置
+    float songPosition;
+    int conditionType;
+    AudioSource audioSource;
+    float [] conditionTime=new float[8];
+    public bool IsInputTime { get {return( (conditionType == (int)EConditionType.Input) ? true : false); } }
 
-    public bool IsInputTime { get {return( (iconditiontype == (int)ConditionType.Input) ? true : false); } }
-    enum ConditionType
-    {
-        Ready=100, //準備區間
-        Input,  //輸入區間
-        Animation,  //動畫區間
+    enum EConditionType{
+        Ready=1,
+        Input,
+        Animation
     }
     // Start is called before the first frame update
     void Start()
     {
-        ftimer = 0.0f;
-        fsecperbeat = 60f / fbpm;
-        fsecround = 8.0f * fsecperbeat; 
+        SecPerBeat = 60f / Bpm;
+        audioSource = gameObject.GetComponent<AudioSource> ();
+        audioSource.Play();  //開始音樂
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ftimer += Time.deltaTime;
-        //Debug.Log((int)ftimer);
-        //Condition();
-        //Debug.Log(iconditiontype);
+        songPosition = audioSource.time;
+        Condition(songPosition);
+        Debug.Log(songPosition/0.6f);
     }
     
-    private void Condition(float ftime)
+    private void Condition(float songPosition)
     {
-        ftime = ftime % fsecround;
-        if (ftime >= 0f && ftime < (2.0f * fsecperbeat))
-            iconditiontype = (int)ConditionType.Ready;
-        else if (ftime >= (2.0f * fsecperbeat)- fdeviation && ftime < (4.0f * fsecperbeat)+ fdeviation)
-            iconditiontype = (int)ConditionType.Input;
-        else if (ftime >= (4.0f * fsecperbeat) && ftime < (8.0f * fsecperbeat))
-            iconditiontype = (int)ConditionType.Animation;
+        float fTime = songPosition % SecRound;
+        if (fTime >= 0f && fTime < (2.0f * SecPerBeat))
+            conditionType = (int)EConditionType.Ready;
+        else if (fTime >= (2.0f * SecPerBeat)- Deviation && fTime < (4.0f * SecPerBeat)+ Deviation)
+            conditionType = (int)EConditionType.Input;
+        else if (fTime >= (4.0f * SecPerBeat) && fTime < (8.0f * SecPerBeat))
+            conditionType = (int)EConditionType.Animation;
     }
     
 
-    public void GetInputResult(List<PlayerInputInfo> playerInputInfo) //判斷是否在輸入成功區間，回傳哪些成功1234
+    public List<PlayerInputInfo> GetInputResult(List<PlayerInputInfo> playerInput) //判斷是否在輸入成功區間
     {
-        for (int i = 0; i < playerInputInfo.Count; i++)
+        List<PlayerInputInfo> result=new List<PlayerInputInfo>();
+        for (int i = 0; i < playerInput.Count; i++)
         {
-            //float ff = ftime[i] % fsecround;
-            //if (ff>= (((2.0f+0.5f*i) * fsecperbeat) - fdeviation) && ff <= (((2.0f + 0.5f * i) * fsecperbeat) + fdeviation))
-            //{
-            //    inputfinish[i] = true;
-            //}
+            float inputTime = playerInput[i].time % SecRound;
+            if (inputTime>= (((2.0f+0.5f*i) * SecPerBeat) - Deviation) && inputTime <= (((2.0f + 0.5f * i) * SecPerBeat) + Deviation))
+            {
+                result.Add(playerInput[i]);
+            }
         }
+        return result;
     }
 }
