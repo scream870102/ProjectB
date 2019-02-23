@@ -74,7 +74,7 @@ public class RhythmTimer : MonoBehaviour
                         if (playerInputTime >= (InputTime[j] - Deviation) && playerInputTime <= (InputTime[j] + Deviation))//有效輸入
                         {
                             //先判斷前一半拍有輸入result.Contains(result[i-1])
-                            if(result[j-1].color!=null){
+                            if(result[j-1].color!=EColor.NONE){
                                 switch(playerInput[i].color){ //判斷顏色組合
                                     case EColor.RED:
                                         if(playerInput[i-1].color==EColor.BLUE)
@@ -83,8 +83,16 @@ public class RhythmTimer : MonoBehaviour
                                             result[i-1].color=EColor.ORANGE;
                                         break;
                                     case EColor.YELLOW:
+                                        if(playerInput[i-1].color==EColor.BLUE)
+                                            result[i-1].color=EColor.GREEN;
+                                        else if (playerInput[i-1].color==EColor.RED)
+                                            result[i-1].color=EColor.ORANGE;
                                         break;
                                     case EColor.BLUE:
+                                        if(playerInput[i-1].color==EColor.YELLOW)
+                                            result[i-1].color=EColor.GREEN;
+                                        else if (playerInput[i-1].color==EColor.RED)
+                                            result[i-1].color=EColor.PURPLE;
                                         break;
                                     default:
                                         break;
