@@ -10,7 +10,7 @@ public class CatchThingManeger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        i = Random.Range( 0, 4 );
+        i = Random.Range( 0, 5 );
         thingImage[rightThing].SetActive(true);//產生UI
     }
 
