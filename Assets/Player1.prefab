@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4679832424865405970}
   - component: {fileID: 4679832424865405971}
   - component: {fileID: 4679832424865405968}
+  - component: {fileID: 5944976}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e6505cae32dfeb24490959e30da93fcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f844dfa801746954f9e07d697333c88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInputString: Player1
   inputs: []
   inputResults:
   - color: 0
@@ -125,15 +127,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d334c380be4ef4c814b8cbaa0375c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_STEPS: 8
   BASIC_CELL_SIZE: 50
+  ANIMATE_TIME: 2
   state: 0
   InputResults: []
   steps: []
-  playerPos: {x: 1, y: 1}
-  tmpPlayerPos: {x: 0, y: 0}
-  testInputResults:
-  - color: 1
-    time: 0
-  - color: 2
-    time: 0
+  playerPos: {x: 0, y: 0}
+--- !u!95 &5944976
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679832424865405969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f1c9d8da31ae884090a63d9a1fde81c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
