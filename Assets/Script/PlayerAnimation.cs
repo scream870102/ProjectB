@@ -57,7 +57,6 @@ public class PlayerAnimation : MonoBehaviour {
         switch (state) {
 
             case EPlayerState.IDLE:
-                Debug.Log ("IDLEEEEEEEEEEEEEEEEEEEE");
                 bGetInput = false;
                 break;
             case EPlayerState.WALK:
@@ -80,8 +79,8 @@ public class PlayerAnimation : MonoBehaviour {
                 if (bFcolorFin && bScolorFin) {
                     state = EPlayerState.ANIM;
                     destination = CountDestination ( );
-                    playerWorldPos = new Vector2 (playerPos.x * BASIC_CELL_SIZE, playerPos.y * BASIC_CELL_SIZE);
-                    destinationPos = new Vector2 (destination.x * BASIC_CELL_SIZE, destination.y * BASIC_CELL_SIZE);
+                    playerWorldPos = new Vector2 (playerPos.x * BASIC_CELL_SIZE, -playerPos.y * BASIC_CELL_SIZE);
+                    destinationPos = new Vector2 (destination.x * BASIC_CELL_SIZE, -destination.y * BASIC_CELL_SIZE);
                     transform.position = playerWorldPos;
                     timer = .0f;
                     playerPos=destination;
@@ -91,8 +90,6 @@ public class PlayerAnimation : MonoBehaviour {
             case EPlayerState.ANIM:
                 transform.position = Vector2.Lerp (transform.position, destinationPos, timer);
                 timer += Time.deltaTime * 0.5f;
-                Debug.Log (steps.Count);
-                Debug.Log ("ANIMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm");
                 break;
         }
     }
