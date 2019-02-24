@@ -12,8 +12,8 @@ public class PlayerInput : MonoBehaviour {
     [SerializeField]
     private List<PlayerInputInfo> inputs = new List<PlayerInputInfo> ( );
     [SerializeField]
-    private PlayerInputInfo[] inputResults = new PlayerInputInfo[2];
-    public PlayerInputInfo[] InputResults { get { return inputResults; } }
+    private PlayerInputInfo [ ] inputResults = new PlayerInputInfo [2];
+    public PlayerInputInfo [ ] InputResults { get { return inputResults; } }
     private bool bReset;
 
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class PlayerInput : MonoBehaviour {
         }
         else if (!parent.rhythmTimer.IsInputTime) {
             bReset = false;
-            inputResults=SendResult (inputs);
+            inputResults = SendResult (inputs);
         }
     }
 
@@ -51,7 +51,8 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    PlayerInputInfo[] SendResult (List<PlayerInputInfo> inputs) {
-        return parent.rhythmTimer.GetInputResult(inputs);
+    PlayerInputInfo [ ] SendResult (List<PlayerInputInfo> inputs) {
+        return parent.rhythmTimer.GetInputResult (inputs);
     }
+
 }

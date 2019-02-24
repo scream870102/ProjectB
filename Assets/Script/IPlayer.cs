@@ -7,14 +7,13 @@ public class IPlayer : MonoBehaviour {
     public RhythmTimer rhythmTimer = null;
     PlayerInput input;
     PlayerAnimation anim;
-    public PlayerInputInfo[] InputResults { get { return input.InputResults; } }
+    public PlayerInputInfo [ ] InputResults { get { return input.InputResults; } }
     void Awake ( ) {
         input = GetComponent<PlayerInput> ( );
         input.Parent = this;
-        anim=GetComponent<PlayerAnimation>();
-        anim.Parent=this;
-        input.PlayerInputString="Player1";
-        rhythmTimer=GameObject.Find("AudioSource").GetComponent<RhythmTimer>();
+        anim = GetComponent<PlayerAnimation> ( );
+        anim.Parent = this;
+        rhythmTimer = GameObject.Find ("AudioSource").GetComponent<RhythmTimer> ( );
     }
     void Start ( ) {
 
@@ -24,7 +23,13 @@ public class IPlayer : MonoBehaviour {
     void Update ( ) {
 
     }
-    public void Init(Vector2Int startPos){
 
+    private void OnTriggerEnter2D (Collider2D other) {
+        if (other.CompareTag ("destination")) {
+            GameEnd (Input.inputString);
+        }
+    }
+    void GameEnd (string winner) {
+        GameManager.instance.GameGetWinner (winner);
     }
 }
