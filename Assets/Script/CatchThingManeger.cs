@@ -12,6 +12,7 @@ public class CatchThingManeger : MonoBehaviour
     {
         i = Random.Range( 0, 5 );
         thingImage[rightThing].SetActive(true);//產生UI
+        Debug.Log(rightThing);
     }
 
     // Update is called once per frame
