@@ -20,11 +20,11 @@ public class MusicSheet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(musicSheet.position.x<=startturn)
+            musicSheet.position=new Vector3(turnto,musicSheet.position.y,musicSheet.position.z);
         isSongPlaying=rhythmTimer.IsSongPlaying;
         if(rhythmTimer.IsSongPlaying){
             musicSheet.position+=new Vector3(-speed*Time.deltaTime,0f,0f);
-            if(musicSheet.position.x<=startturn)
-                musicSheet.position=new Vector3(turnto,musicSheet.position.y,musicSheet.position.z);
         }
     }
 }
