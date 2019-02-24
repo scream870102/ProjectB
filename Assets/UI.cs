@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    public GameObject 
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IPlayer
+        //GameManager.instance.player1.InputResults;
     }
 }
