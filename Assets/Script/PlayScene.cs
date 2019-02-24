@@ -11,12 +11,14 @@ public class PlayScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gamefinish=false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.Winner!="NONE")
+            gamefinish=true;
         if(gamefinish){
             ShowWiner();
         }
