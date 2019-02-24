@@ -9,14 +9,13 @@ public class RhythmTimer : MonoBehaviour
     float SecPerBeat;  //1拍幾秒
     float SecRound;  //每回合幾秒
     float dspTimeSong;  //歌曲位置
+    AudioSource audioSource;
     float songPosition;
     int conditionType;
-    AudioSource audioSource;
     float[] InputTime = new float[4];
     public bool IsInputTime { get { return ((conditionType == (int)EConditionType.Input) ? true : false); } }
-    
     public float GetSongPosition{ get { return songPosition; } }
-
+    public bool IsSongPlaying{ get { return audioSource.isPlaying; } }
     enum EConditionType
     {
         Ready = 1,
