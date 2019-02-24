@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public float minX,maxX,minY,maxY;
+    private float minX,maxX,minY,maxY;
     public Transform target;
     // Start is called before the first frame update
     private Vector3 offset;
@@ -13,6 +13,10 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         offset = target.position - this.transform.position;
+        minX=-1000f;
+        minY=-1000f;
+        maxX=1000f;
+        maxY=1000f;
 
     }
 
