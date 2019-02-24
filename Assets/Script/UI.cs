@@ -18,11 +18,11 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        aa=EColor.RED;
         if(whichPlayer==0){
             int k=0;
             for(int i=0;i<2;i++) {
-                //aa=GameManager.instance.player1.InputResults[i].color;
+                aa=GameManager.instance.player1.InputResults[i].color;
+                Debug.Log(aa);
                 if(aa!=EColor.NONE){
                     Debug.Log("aa");
                     if(k==0){
@@ -33,7 +33,6 @@ public class UI : MonoBehaviour
                         k++;
                     }
                 }
-                aa++;
             }
         }
         
