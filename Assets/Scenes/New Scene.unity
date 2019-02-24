@@ -204,6 +204,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9048303514205299998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &454878021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 454878023}
+  - component: {fileID: 454878022}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &454878022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454878021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebfc482d33f8e64f97b68f9cafb6f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &454878023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454878021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 89.21797, y: 112.51194, z: -6.6193113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &583459495
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +900,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1494915540}
   - component: {fileID: 1494915539}
-  - component: {fileID: 1494915538}
   - component: {fileID: 1494915541}
   m_Layer: 0
   m_Name: Camera2
@@ -866,14 +908,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1494915538
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494915537}
-  m_Enabled: 1
 --- !u!20 &1494915539
 Camera:
   m_ObjectHideFlags: 0
@@ -1588,6 +1622,16 @@ PrefabInstance:
     - target: {fileID: 4679832424865405972, guid: 80d60ba99ced3864da3a4a34db4bd356,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679832424865405968, guid: 80d60ba99ced3864da3a4a34db4bd356,
+        type: 3}
+      propertyPath: playerPos.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679832424865405968, guid: 80d60ba99ced3864da3a4a34db4bd356,
+        type: 3}
+      propertyPath: playerPos.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
