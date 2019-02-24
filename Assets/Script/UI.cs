@@ -24,6 +24,7 @@ public class UI : MonoBehaviour
             for(int i=0;i<2;i++) {
                 //aa=GameManager.instance.player1.InputResults[i].color;
                 if(aa!=EColor.NONE){
+                    Debug.Log("aa");
                     if(k==0){
                         colorImageright[(int)aa].SetActive(true);
                         k++;}
@@ -32,6 +33,7 @@ public class UI : MonoBehaviour
                         k++;
                     }
                 }
+                aa++;
             }
         }
         
