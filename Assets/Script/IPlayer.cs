@@ -16,7 +16,6 @@ public class IPlayer : MonoBehaviour {
         rhythmTimer = GameObject.Find ("AudioSource").GetComponent<RhythmTimer> ( );
     }
     void Start ( ) {
-
     }
 
     // Update is called once per frame
