@@ -22,16 +22,14 @@ public class PlayerAnimation : MonoBehaviour {
     private EPlayerState state;
     [SerializeField]
     private List<PlayerInputInfo> InputResults = new List<PlayerInputInfo> ( );
-    [SerializeField]
     private bool bFcolorFin = false;
     private bool bScolorFin = false;
     [SerializeField]
     protected List<Vector2Int> steps = new List<Vector2Int> ( );
 
     public Vector2Int playerPos;
-    public Vector2Int tmpPlayerPos;
-    public Vector2Int tmpBeforePos;
-    public PlayerInputInfo [ ] testInputResults;
+    protected Vector2Int tmpPlayerPos;
+    protected Vector2Int tmpBeforePos;
     protected Vector2 direction;
     protected Vector2Int destination;
     protected Vector2 destinationPos;
