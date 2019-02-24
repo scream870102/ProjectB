@@ -6,7 +6,7 @@ public class CatchThingManeger : MonoBehaviour
 {
     public int rightThing{ get { return i; }} 
     int i;
-    public GameObject[] thingImage=new GameObject[4];
+    public GameObject[] thingImage=new GameObject[5];
     // Start is called before the first frame update
     void Start()
     {
