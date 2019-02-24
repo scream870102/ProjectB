@@ -52,6 +52,6 @@ public class PlayerInput : MonoBehaviour {
     }
 
     PlayerInputInfo[] SendResult (List<PlayerInputInfo> inputs) {
-        return parent.rhythmTimer.GetInputResult(inputs);;
+        return parent.rhythmTimer.GetInputResult(inputs);
     }
 }

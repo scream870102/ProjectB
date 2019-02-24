@@ -40,7 +40,7 @@ public class RhythmTimer : MonoBehaviour
     {
         songPosition = audioSource.time;
         Condition(songPosition);   //判斷狀態
-        Debug.Log(conditionType);
+        //Debug.Log(conditionType);
     }
 
     private void Condition(float songPosition)

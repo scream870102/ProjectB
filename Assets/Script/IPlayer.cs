@@ -24,4 +24,7 @@ public class IPlayer : MonoBehaviour {
     void Update ( ) {
 
     }
+    public void Init(Vector2Int startPos){
+
+    }
 }
